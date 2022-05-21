@@ -34,6 +34,19 @@ func StringSum(input string) (output string, err error) {
 
 	values := strings.Split(input, "+")
 
+	if len(values) == 1 {
+		lastIndex := strings.LastIndex(input, "-")
+
+		switch {
+		case lastIndex <= 0:
+			return "", fmt.Errorf("error in operands: %w", errorNotTwoOperands)
+		case len(input)-1 == lastIndex:
+			return "", fmt.Errorf("error in operands: %w", errorNotTwoOperands)
+		default:
+			return calculate(input[:lastIndex], input[lastIndex:])
+		}
+	}
+
 	if len(values) != 2 {
 		return "", fmt.Errorf("error in operands: %w", errorNotTwoOperands)
 	}
