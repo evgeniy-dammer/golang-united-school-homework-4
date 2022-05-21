@@ -16,7 +16,7 @@ var testCases = []testStringSum{
 	{"three", " 5 + - 3 ", "2"},
 }
 
-func TestStringSum(t *testing.T) {
+func TestMyStringSum(t *testing.T) {
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
 			actual, err := StringSum(testCase.input)
